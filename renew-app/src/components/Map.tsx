@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { findClosestBuilding } from "./solar";
 
 const containerStyle = {
   width: "100%",
@@ -9,8 +10,8 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-  lat: 42.728661, // San Francisco latitude
-  lng: -73.679733, // San Francisco longitude
+  lat: 42.728661, // Troy latitude
+  lng: -73.679733, // Troy longitude
 };
 
 const Map: React.FC = () => {
@@ -19,22 +20,33 @@ const Map: React.FC = () => {
     lng: defaultCenter.lng,
   });
 
+  const [solarPotential, setSolarPotential] = useState<any | null>(null);
+
   const handleMapClick = (event: google.maps.MapMouseEvent) => {
     const lat = event.latLng?.lat() ?? defaultCenter.lat;
     const lng = event.latLng?.lng() ?? defaultCenter.lng;
 
     setCoordinates({ lat, lng });
+    const location = {
+      lat: () => lat,
+      lng: () => lng,
+    };
+    const data = findClosestBuilding(location, "");
+    setSolarPotential(data);
+    console.log(solarPotential);
   };
 
   return (
     <div>
       <h1>Click on the Map to Get Coordinates</h1>
-      <LoadScript googleMapsApiKey={process.env.API_KEY!}>
+      <LoadScript googleMapsApiKey={""}>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={coordinates}
           zoom={10}
-          onClick={handleMapClick}
+          onClick={async () => {
+            await handleMapClick;
+          }}
         >
           <Marker position={coordinates} />
         </GoogleMap>
@@ -45,6 +57,10 @@ const Map: React.FC = () => {
         </p>
         <p>
           <strong>Longitude:</strong> {coordinates.lng.toFixed(5)}
+        </p>
+        <p>
+          <strong>Solar Potential Count:</strong>{" "}
+          {solarPotential && <>{solarPotential.maxArrayPanelsCount}</>}
         </p>
       </div>
     </div>
