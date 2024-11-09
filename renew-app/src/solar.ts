@@ -1,8 +1,9 @@
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 
-// Load environment variables from .env file
+// Load the .env file
 dotenv.config();
 
+// Access environment variables
 const apiKey = process.env.API_KEY;
 
 if (!apiKey) {
