@@ -1,6 +1,12 @@
 interface BuildingInsightsResponse {
   status: string;
   data: any; // Replace `any` with a more specific type if known
+  solarPotential: {
+    maxArrayPanelsCount: number;
+    maxArrayAreaMeters2: number;
+    maxSunshineHoursPerYear: number;
+    // Add other solar-related fields here
+  };
 }
 
 /**

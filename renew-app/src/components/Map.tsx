@@ -22,7 +22,7 @@ const Map: React.FC = () => {
 
   const [solarPotential, setSolarPotential] = useState<any | null>(null);
 
-  const handleMapClick = (event: google.maps.MapMouseEvent) => {
+  const handleMapClick = async (event: google.maps.MapMouseEvent) => {
     const lat = event.latLng?.lat() ?? defaultCenter.lat;
     const lng = event.latLng?.lng() ?? defaultCenter.lng;
 
@@ -31,22 +31,26 @@ const Map: React.FC = () => {
       lat: () => lat,
       lng: () => lng,
     };
-    const data = findClosestBuilding(location, "");
-    setSolarPotential(data);
-    console.log(solarPotential);
+
+    // Provide your actual Google API key here
+    const apiKey = "";
+
+    const data = await findClosestBuilding(location, apiKey);
+    setSolarPotential(data.solarPotential);
+    console.log(data); // Log data directly instead of solarPotential
   };
 
   return (
     <div>
       <h1>Click on the Map to Get Coordinates</h1>
       <LoadScript googleMapsApiKey={""}>
+        {" "}
+        {/* Add your API key here */}
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={coordinates}
           zoom={10}
-          onClick={async () => {
-            await handleMapClick;
-          }}
+          onClick={(event) => handleMapClick(event)} // Correctly call handleMapClick
         >
           <Marker position={coordinates} />
         </GoogleMap>
@@ -59,8 +63,12 @@ const Map: React.FC = () => {
           <strong>Longitude:</strong> {coordinates.lng.toFixed(5)}
         </p>
         <p>
-          <strong>Solar Potential Count:</strong>{" "}
-          {solarPotential && <>{solarPotential.maxArrayPanelsCount}</>}
+          <h2>maxArrayPanelsCount:</h2>
+          {solarPotential?.maxArrayPanelsCount ?? "N/A"} {/* Safe access */}
+          <h2>maxArrayAreaMeters2:</h2>
+          {solarPotential?.maxArrayAreaMeters2 ?? "N/A"}
+          <h2>maxSunshineHoursPerYear</h2>
+          {solarPotential?.maxSunshineHoursPerYear ?? "N/A"}
         </p>
       </div>
     </div>
