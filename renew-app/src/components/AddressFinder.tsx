@@ -4,8 +4,10 @@ interface GeocodeResponse {
   lat: number;
   lng: number;
 }
-
-const AddressFinder: React.FC = () => {
+interface AddressFinderProps {
+  onCoordinatesFound: (coordinates: GeocodeResponse) => void;
+}
+const AddressFinder: React.FC <AddressFinderProps>= ({onCoordinatesFound}) =>  {
   const [address, setAddress] = useState<string>("");
   const [coordinates, setCoordinates] = useState<GeocodeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -13,6 +15,7 @@ const AddressFinder: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(e.target.value);
   };
+  
 
   const findAddress = async () => {
     setError(null); // Reset any previous error
@@ -40,6 +43,7 @@ const AddressFinder: React.FC = () => {
 
       const { lat, lng } = data.results[0].geometry.location;
       setCoordinates({ lat, lng });
+      onCoordinatesFound({lat, lng});
     } catch (error: any) {
       setError(error.message || "An error occurred");
     }
