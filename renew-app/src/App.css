@@ -91,12 +91,15 @@ h1 {
   /* padding-top: 40px; */
   /* align-items: center; */
   /* border-radius: 5px; */
+  
   transition: background-color 0.3s;
   font-family: "Courier New", Courier, monospace;
 }
 
 .App-nav a:hover {
+  background-size: 200px 50px; /* not working */
   background-color: #4f4fe2;
+
 }
 
 .App-background {

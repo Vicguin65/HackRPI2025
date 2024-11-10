@@ -9,7 +9,9 @@ import { ReactComponent as NAmericaShape } from "./assets/north-america.svg";
 import { ReactComponent as SAmericaShape } from "./assets/south-america.svg";
 import { ReactComponent as AustraliaShape } from "./assets/australia.svg";
 
+
 function App() {
+
   return (
     <div className="App">
       {/* The Header with navigation */}
@@ -24,7 +26,7 @@ function App() {
               <a href="#problem">Our Problem</a>
             </li>
             <li>
-              <a href="#contact">Our Team</a>
+              <a href="#team">Our Team</a>
             </li>
           </ul>
         </nav>
@@ -32,20 +34,7 @@ function App() {
       <div className="App-body">
         <h1 className="App-title">Should you build solar panels on your house?</h1>
       </div>
-      <UserInputForm />
       <div className="App-background">
-        {/* <h1 className="App-title">Where do you want to build solar panels?</h1> */}
-        {/* <svg className="background-shape" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" fill="rgb(16, 146, 207)" />
-        </svg>
-        <svg className="background-shape" viewBox="0 0 100 100">
-          <rect x="20" y="20" width="60" height="60" fill="rgb(4, 80, 151)" />
-        </svg>
-        <svg className="background-shape" viewBox="0 0 100 100">
-          <path
-            fill="rgb(4, 80, 151)"></path>
-        </svg> */}
-        {/* <NorthAmericaShape className="background-shape"/> */}
         <AsiaShape className="asia-shape" />
         <AfricaShape className="africa-shape" />
         <NAmericaShape className="north-america-shape" />
