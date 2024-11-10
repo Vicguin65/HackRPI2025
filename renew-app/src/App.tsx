@@ -11,7 +11,7 @@ import { ReactComponent as NAmericaShape } from "./assets/north-america.svg";
 import { ReactComponent as SAmericaShape } from "./assets/south-america.svg";
 import { ReactComponent as AustraliaShape } from "./assets/australia.svg";
 import { useNavigate } from 'react-router-dom';
-
+import Navbar from './components/Navbar'
 
 function App() {
   // Define a function to handle the coordinates found by AddressFinder
@@ -34,22 +34,7 @@ function App() {
   return (
     <div className="App">
       {/* The Header with navigation */}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <nav className="App-nav">
-          <ul>
-            <li>
-              <button  className="button-style">Home</button>
-            </li>
-            <li>
-              <button onClick={handleProblemClick} className="button-style">Our Problem</button>
-            </li>
-            <li>
-              <button onClick={handleTeamClick} className="button-style">Our Team</button>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <Navbar />
       <div className="App-body">
         <h1 className="App-title">Should you build solar panels on your house?</h1>
       </div>

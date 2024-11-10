@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Map from "../components/Map";
-
+import Navbar from "../components/Navbar";
 interface GeocodeResponse {
   lat: number;
   lng: number;
@@ -15,7 +15,9 @@ const ProjectPage: React.FC = () => {
   };
 
   return (
+    
     <div className="App">
+      <Navbar />
       <Map coordinates={coordinates} />
     </div>
   );

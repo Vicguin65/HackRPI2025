@@ -9,6 +9,7 @@ function SolarPanelEstimator({ solarPanelConfigs }) {
 
   // Get the current configuration based on the selected index
   const currentConfig = solarPanelConfigs[panelIndex];
+  console.log(currentConfig)
 
   // Extract financial data for the selected panel configuration, handling missing data
   const financialData = currentConfig?.financialAnalyses?.[0] || {};
@@ -20,13 +21,16 @@ function SolarPanelEstimator({ solarPanelConfigs }) {
 
   return (
     <div>
-      <h2>Estimate on Solar Panels</h2>
+      <h2>Sustainability Estimates on Solar Panels</h2>
 
       <p>
         <strong>Number of Panels:</strong> {currentConfig.panelsCount}
       </p>
       <p>
         <strong>Estimated Yearly DC Energy Output:</strong> {currentConfig.yearlyEnergyDcKwh} kWh
+      </p>
+      <p>
+        <strong>CO2 Offset Factor:</strong> {currentConfig.carbonOffsetFactorKgPerMwhyearlyEnergyDcKwh} kWh
       </p>
 
       {/* Display Financial Information */}

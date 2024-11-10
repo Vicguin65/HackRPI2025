@@ -10,70 +10,93 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 .map-container {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 800px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .map {
-    border: 2px solid #6c6cee;
-    border-radius: 8px;
-  }
-  
-  .coordinates-display {
-    font-size: 18px;
-    color: #333;
-    margin-top: 15px;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: paralucent, sans-serif;
-  }
-  
-  .solar-panel-estimator {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #eef1ff;
-    border: 1px solid #d1d8ff;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .solar-panel-estimator h3 {
-    color: #4f4fe2;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  .solar-panel-estimator h2 {
-    color: #4f4fe2;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .solar-panel-estimator p {
-    margin: 5px 0;
-    line-height: 1.5;
-  }
-  
-  .solar-panel-estimator .button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #6c6cee;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .solar-panel-estimator .button:hover {
-    background-color: #4f4fe2;
-  }
-  
+  display: flex;
+  flex-direction: row; /* Align children horizontally */
+  justify-content: flex-start; /* Align content to the left */
+  align-items: flex-start; /* Align the items at the top */
+  padding: 20px;
+  gap: 20px; /* Adds space between left and right sections */
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 40%; /* Set left section width to 40% */
+  min-width: 250px; /* Prevent section from becoming too narrow */
+}
+
+.coordinates-display,
+.solar-panel-estimator {
+  margin-bottom: 20px; /* Add space between sections */
+}
+
+.solar-panel-estimator {
+  padding: 15px;
+  margin-top: 0px;
+  background-color: #eef1ff;
+  border: 1px solid #d1d8ff;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.solar-panel-estimator h3 {
+  color: #4f4fe2;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.solar-panel-estimator h2 {
+  color: #4f4fe2;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.solar-panel-estimator p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.solar-panel-estimator .button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #6c6cee;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.solar-panel-estimator .button:hover {
+  background-color: #4f4fe2;
+}
+
+.coordinates-display {
+  font-size: 18px;
+  color: #333;
+  margin-top: 15px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: paralucent, sans-serif;
+}
+
+.map {
+  flex: 1; /* Map takes up remaining space */
+  border: 2px solid #6c6cee;
+  border-radius: 8px;
+  height: 100vh; /* Ensure the map takes up full height */
+  margin-top: 15px;
+}
+
+.map-container > .map {
+  height: 100%; /* Ensure the map container takes up full height */
+  margin-top: 15px;
+}
