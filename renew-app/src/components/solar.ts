@@ -5,9 +5,60 @@ interface BuildingInsightsResponse {
     maxArrayPanelsCount: number;
     maxArrayAreaMeters2: number;
     maxSunshineHoursPerYear: number;
+    solarPanelConfigs: SolarPanelConfig[];
+    financialAnalyses: FinancialAnalysis[];
     // Add other solar-related fields here
   };
 }
+
+interface SolarPanelConfig {
+  panelsCount: number;
+  yearlyEnergyDcKwh: number;
+}
+
+interface Currency {
+  currencyCode: string;
+  units: string;
+  nanos?: number;
+}
+
+interface Savings {
+  savingsYear1: Currency;
+  savingsYear20: Currency;
+  financiallyViable: boolean;
+}
+
+interface LeasingSavings extends Savings {
+  annualLeasingCost: Currency;
+}
+
+interface CashPurchaseSavings extends Savings {
+  paybackYears: number;
+  upfrontCost: Currency;
+}
+
+interface FinancedPurchaseSavings extends Savings {
+  annualLoanPayment: Currency;
+}
+
+interface FinancialDetails {
+  initialAcKwhPerYear: number;
+  remainingLifetimeUtilityBill: Currency;
+  federalIncentive: Currency;
+  costOfElectricityWithoutSolar: Currency;
+  solarPercentage: number;
+}
+
+interface FinancialAnalysis {
+  panelConfigIndex: number;
+  financialDetails?: FinancialDetails;
+  leasingSavings?: LeasingSavings;
+  cashPurchaseSavings?: CashPurchaseSavings;
+  financedPurchaseSavings?: FinancedPurchaseSavings;
+}
+
+
+
 
 /**
  * Fetches the building insights information from the Solar API.
