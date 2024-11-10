@@ -14,6 +14,10 @@ function SolarPanelEstimator({ solarPotential }) {
 
   // Extract financial data for the selected panel configuration, handling missing data
   const financialData = currentConfig?.financialAnalyses?.[0] || {};
+  const financialDataSavings = solarPotential?.financialAnalyses?.find(
+    (analysis) => analysis.panelConfigIndex === panelIndex
+  )?.cashPurchaseSavings || {};
+
 
   // Get the savings and payback years with safe fallback values
   const savingsYear1 = financialData?.cashPurchaseSavings?.savings?.savingsYear1?.units || 'N/A';
@@ -38,13 +42,7 @@ function SolarPanelEstimator({ solarPotential }) {
       <div>
         <h3>Financial Estimate</h3>
         <p>
-          <strong>Savings Year 1:</strong> ${savingsYear1}
-        </p>
-        <p>
-          <strong>Savings Year 20:</strong> ${savingsYear20}
-        </p>
-        <p>
-          <strong>Payback Years:</strong> {paybackYears} years
+        <strong> Payback: </strong> {financialDataSavings?.paybackYears || 'N/A'};
         </p>
       </div>
 
@@ -62,7 +60,7 @@ function SolarPanelEstimator({ solarPotential }) {
       </label>
 
       {/* Display current panel index */}
-      <p>Current Panel Index: {panelIndex}</p>
+    
     </div>
   );
 }
