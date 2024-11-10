@@ -5,6 +5,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ProjectPage from "./pages/ProjectPage";
+import Problem from "./pages/Problem";
+import Team from "./pages/Team";
 
 // Define the routes, including the ProjectPage route
 const router = createBrowserRouter([
@@ -16,6 +18,14 @@ const router = createBrowserRouter([
     path: "/project",
     element: <ProjectPage />,
   },
+  {
+    path: "/about",
+    element: <Problem/>,
+  },
+  {
+    path: "/team",
+    element: <Team/>,
+  }
 ]);
 
 // Render the router

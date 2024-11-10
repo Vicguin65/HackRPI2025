@@ -54,7 +54,8 @@ const Map: React.FC<DisplayCoordinatesProps> = ({ coordinates }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={coordinates}
-          zoom={17}
+          zoom={18}
+         
         >
           <Marker position={coordinates} />
         </GoogleMap>

@@ -10,6 +10,8 @@ import { ReactComponent as AsiaShape } from "./assets/asia.svg";
 import { ReactComponent as NAmericaShape } from "./assets/north-america.svg";
 import { ReactComponent as SAmericaShape } from "./assets/south-america.svg";
 import { ReactComponent as AustraliaShape } from "./assets/australia.svg";
+import { useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar'
 
 function App() {
   // Define a function to handle the coordinates found by AddressFinder
@@ -17,31 +19,28 @@ function App() {
     console.log("Coordinates found:", coordinates);
     // Additional logic can go here, such as updating state or making API calls
   };
+    const navigate = useNavigate();
+  
+    const handleHomeClick = () => {
+      navigate('/');
+    };
+
+    const handleProblemClick = () => {
+      navigate('/about');
+    };
+  
+    const handleTeamClick = () => {
+      navigate('/team');
+    };
 
   return (
     <div className="App">
       {/* The Header with navigation */}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <nav className="App-nav">
-          <ul>
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li>
-              <a href="#problem">Our Problem</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <Navbar />
       <div className="App-body">
-        <h1 className="App-title">Where do you want to build solar panels?</h1>
+        <h1 className="App-title">Should you build solar panels on your house?</h1>
       </div>
       
-      {/* Replace UserInputForm with AddressFinder */}
       <AddressFinder onCoordinatesFound={handleCoordinatesFound} />
       
       <div className="App-background">
@@ -53,6 +52,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
