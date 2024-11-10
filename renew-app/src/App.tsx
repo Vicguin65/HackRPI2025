@@ -1,8 +1,6 @@
-import React from "react";
 import logo from "./assets/logo.png";
 import "./App.css";
-import AddressFinder from "./components/AddressFinder";
-import ProjectPage from "./pages/ProjectPage";
+import UserInputForm from "./components/UserInputForm";
 import BackgroundTransition from "./components/BackgroundTransition";
 import { ReactComponent as ContinentsShape } from "./Continents.svg";
 import { ReactComponent as AfricaShape } from "./assets/africa.svg";
@@ -12,12 +10,6 @@ import { ReactComponent as SAmericaShape } from "./assets/south-america.svg";
 import { ReactComponent as AustraliaShape } from "./assets/australia.svg";
 
 function App() {
-  // Define a function to handle the coordinates found by AddressFinder
-  const handleCoordinatesFound = (coordinates: { lat: number; lng: number }) => {
-    console.log("Coordinates found:", coordinates);
-    // Additional logic can go here, such as updating state or making API calls
-  };
-
   return (
     <div className="App">
       {/* The Header with navigation */}
@@ -40,11 +32,20 @@ function App() {
       <div className="App-body">
         <h1 className="App-title">Where do you want to build solar panels?</h1>
       </div>
-      
-      {/* Replace UserInputForm with AddressFinder */}
-      <AddressFinder onCoordinatesFound={handleCoordinatesFound} />
-      
+      <UserInputForm />
       <div className="App-background">
+        {/* <h1 className="App-title">Where do you want to build solar panels?</h1> */}
+        {/* <svg className="background-shape" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" fill="rgb(16, 146, 207)" />
+        </svg>
+        <svg className="background-shape" viewBox="0 0 100 100">
+          <rect x="20" y="20" width="60" height="60" fill="rgb(4, 80, 151)" />
+        </svg>
+        <svg className="background-shape" viewBox="0 0 100 100">
+          <path
+            fill="rgb(4, 80, 151)"></path>
+        </svg> */}
+        {/* <NorthAmericaShape className="background-shape"/> */}
         <AsiaShape className="asia-shape" />
         <AfricaShape className="africa-shape" />
         <NAmericaShape className="north-america-shape" />

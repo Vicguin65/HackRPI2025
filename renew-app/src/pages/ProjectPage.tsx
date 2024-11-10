@@ -1,6 +1,7 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import logo from "./logo.svg";
 import Map from "../components/Map";
+import AddressFinder from "../components/AddressFinder";
+import React, { useState } from "react";
 
 interface GeocodeResponse {
   lat: number;
@@ -8,14 +9,16 @@ interface GeocodeResponse {
 }
 
 const ProjectPage: React.FC = () => {
-  const location = useLocation();
-  const coordinates = location.state?.coordinates || {
+  const [coordinates, setCoordinates] = useState<GeocodeResponse>({
     lat: 41.728661,
     lng: -73.679733,
+  });
+  const handleCoordinatesFound = (coords: GeocodeResponse) => {
+    setCoordinates(coords); // Store coordinates in parent state
   };
-
   return (
     <div className="App">
+      <AddressFinder onCoordinatesFound={handleCoordinatesFound} />
       <Map coordinates={coordinates} />
     </div>
   );
