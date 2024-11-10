@@ -33,19 +33,21 @@ const Map: React.FC = () => {
     };
 
     // Provide your actual Google API key here
-    const apiKey = "";
+    const apiKey = process.env.REACT_APP_API_KEY;
 
-    const data = await findClosestBuilding(location, apiKey);
-    setSolarPotential(data.solarPotential);
-    console.log(data); // Log data directly instead of solarPotential
+    findClosestBuilding(location, apiKey)
+      .then((data) => {
+        setSolarPotential(data.solarPotential);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
     <div>
       <h1>Click on the Map to Get Coordinates</h1>
-      <LoadScript googleMapsApiKey={""}>
-        {" "}
-        {/* Add your API key here */}
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={coordinates}
