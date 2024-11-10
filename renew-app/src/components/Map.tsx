@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { findClosestBuilding } from "./solar";
+import SolarPanelEstimator from "./SolarPanelEstimator"; // Import the slider component
 
 const containerStyle = {
   width: "100%",
@@ -66,14 +67,18 @@ const Map: React.FC<DisplayCoordinatesProps> = ({ coordinates }) => {
         <p>
           <strong>Longitude:</strong> {coordinates.lng.toFixed(5)}
         </p>
-        <p>
+        <div>
           <h2>maxArrayPanelsCount:</h2>
           {solarPotential?.maxArrayPanelsCount ?? "N/A"}
           <h2>maxArrayAreaMeters2:</h2>
           {solarPotential?.maxArrayAreaMeters2 ?? "N/A"}
-          <h2>maxSunshineHoursPerYear</h2>
+          <h2>maxSunshineHoursPerYear:</h2>
           {solarPotential?.maxSunshineHoursPerYear ?? "N/A"}
-        </p>
+        </div>
+        {/* Conditionally render the SolarPanelEstimator if solar panel configurations are available */}
+        {solarPotential?.solarPanelConfigs && (
+          <SolarPanelEstimator solarPanelConfigs={solarPotential.solarPanelConfigs} />
+        )}
       </div>
     </div>
   );
