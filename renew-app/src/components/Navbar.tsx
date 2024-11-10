@@ -6,8 +6,12 @@ import '../App.css'; // Make sure you create a CSS file for the Navbar styling
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const handleProblemClick = () => {
-    navigate('/problem');
+    navigate('/about');
   };
 
   const handleTeamClick = () => {
@@ -20,7 +24,7 @@ const Navbar: React.FC = () => {
       <nav className="App-nav">
         <ul>
           <li>
-            <button className="button-style" onClick={() => navigate('/')}>
+            <button onClick={handleHomeClick} className="button-style">
               Home
             </button>
           </li>
