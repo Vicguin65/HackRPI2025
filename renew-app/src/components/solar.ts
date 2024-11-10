@@ -5,6 +5,7 @@ interface BuildingInsightsResponse {
     maxArrayPanelsCount: number;
     maxArrayAreaMeters2: number;
     maxSunshineHoursPerYear: number;
+    carbonOffsetFactorKgPerMwh: number;
     solarPanelConfigs: SolarPanelConfig[];
     financialAnalyses: FinancialAnalysis[];
     // Add other solar-related fields here

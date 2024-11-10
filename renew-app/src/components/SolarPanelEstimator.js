@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-function SolarPanelEstimator({ solarPanelConfigs }) {
+function SolarPanelEstimator({ solarPotential }) {
   const [panelIndex, setPanelIndex] = useState(0);
 
   // Guard against missing data
-  if (!solarPanelConfigs || solarPanelConfigs.length === 0) {
+  if (!solarPotential.solarPanelConfigs || solarPotential.solarPanelConfigs.length === 0) {
     return <p>No solar panel data available</p>;
   }
 
   // Get the current configuration based on the selected index
-  const currentConfig = solarPanelConfigs[panelIndex];
+  const currentConfig = solarPotential.solarPanelConfigs[panelIndex];
+  
   console.log(currentConfig)
 
   // Extract financial data for the selected panel configuration, handling missing data
@@ -30,7 +31,7 @@ function SolarPanelEstimator({ solarPanelConfigs }) {
         <strong>Estimated Yearly DC Energy Output:</strong> {currentConfig.yearlyEnergyDcKwh} kWh
       </p>
       <p>
-        <strong>CO2 Offset Factor:</strong> {currentConfig.carbonOffsetFactorKgPerMwhyearlyEnergyDcKwh} kWh
+        <strong>CO2 Offset Factor:</strong> {solarPotential.carbonOffsetFactorKgPerMwh} kWh
       </p>
 
       {/* Display Financial Information */}
@@ -54,7 +55,7 @@ function SolarPanelEstimator({ solarPanelConfigs }) {
           type="range"
           id="panelSlider"
           min="0"
-          max={solarPanelConfigs.length - 1}
+          max={solarPotential.solarPanelConfigs.length - 1}
           value={panelIndex}
           onChange={(e) => setPanelIndex(Number(e.target.value))}
         />

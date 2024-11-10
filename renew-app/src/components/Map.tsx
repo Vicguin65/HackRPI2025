@@ -66,7 +66,7 @@ const Map: React.FC<DisplayCoordinatesProps> = ({ coordinates }) => {
         {/* Conditionally render the SolarPanelEstimator if solar panel configurations are available */}
         {solarPotential?.solarPanelConfigs && (
         <div className="solar-panel-estimator">
-        <SolarPanelEstimator solarPanelConfigs={solarPotential.solarPanelConfigs} />
+        <SolarPanelEstimator solarPotential={solarPotential} />
       </div>
           
         )}
