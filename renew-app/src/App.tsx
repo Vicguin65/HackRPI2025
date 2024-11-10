@@ -21,12 +21,14 @@ function App() {
   };
     const navigate = useNavigate();
   
-    // Function to handle navigation to /problem
+    const handleHomeClick = () => {
+      navigate('/');
+    };
+
     const handleProblemClick = () => {
-      navigate('/problem');
+      navigate('/about');
     };
   
-    // Function to handle navigation to /team
     const handleTeamClick = () => {
       navigate('/team');
     };
@@ -39,10 +41,10 @@ function App() {
         <nav className="App-nav">
           <ul>
             <li>
-              <button  className="button-style">Home</button>
+              <button onClick={handleHomeClick} className="button-style">Home</button>
             </li>
             <li>
-              <button onClick={handleProblemClick} className="button-style">Our Problem</button>
+              <button onClick={handleProblemClick} className="button-style">About</button>
             </li>
             <li>
               <button onClick={handleTeamClick} className="button-style">Our Team</button>
