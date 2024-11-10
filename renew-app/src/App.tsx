@@ -1,6 +1,8 @@
+import React from "react";
 import logo from "./assets/logo.png";
 import "./App.css";
-import UserInputForm from "./components/UserInputForm";
+import AddressFinder from "./components/AddressFinder";
+import ProjectPage from "./pages/ProjectPage";
 import BackgroundTransition from "./components/BackgroundTransition";
 import { ReactComponent as ContinentsShape } from "./Continents.svg";
 import { ReactComponent as AfricaShape } from "./assets/africa.svg";
@@ -11,7 +13,6 @@ import { ReactComponent as AustraliaShape } from "./assets/australia.svg";
 
 
 function App() {
-
   return (
     <div className="App">
       {/* The Header with navigation */}
@@ -34,6 +35,7 @@ function App() {
       <div className="App-body">
         <h1 className="App-title">Should you build solar panels on your house?</h1>
       </div>
+
       <div className="App-background">
         <AsiaShape className="asia-shape" />
         <AfricaShape className="africa-shape" />
