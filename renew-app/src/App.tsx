@@ -21,12 +21,14 @@ function App() {
   };
     const navigate = useNavigate();
   
-    // Function to handle navigation to /problem
+    const handleHomeClick = () => {
+      navigate('/');
+    };
+
     const handleProblemClick = () => {
-      navigate('/problem');
+      navigate('/about');
     };
   
-    // Function to handle navigation to /team
     const handleTeamClick = () => {
       navigate('/team');
     };
