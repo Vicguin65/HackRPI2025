@@ -10,6 +10,8 @@ import { ReactComponent as AsiaShape } from "./assets/asia.svg";
 import { ReactComponent as NAmericaShape } from "./assets/north-america.svg";
 import { ReactComponent as SAmericaShape } from "./assets/south-america.svg";
 import { ReactComponent as AustraliaShape } from "./assets/australia.svg";
+import { useNavigate } from 'react-router-dom';
+
 
 function App() {
   // Define a function to handle the coordinates found by AddressFinder
@@ -17,6 +19,17 @@ function App() {
     console.log("Coordinates found:", coordinates);
     // Additional logic can go here, such as updating state or making API calls
   };
+    const navigate = useNavigate();
+  
+    // Function to handle navigation to /problem
+    const handleProblemClick = () => {
+      navigate('/problem');
+    };
+  
+    // Function to handle navigation to /team
+    const handleTeamClick = () => {
+      navigate('/team');
+    };
 
   return (
     <div className="App">
@@ -26,13 +39,13 @@ function App() {
         <nav className="App-nav">
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <button  className="button-style">Home</button>
             </li>
             <li>
-              <a href="#problem">Our Problem</a>
+              <button onClick={handleProblemClick} className="button-style">Our Problem</button>
             </li>
             <li>
-              <a href="#contact">Our Team</a>
+              <button onClick={handleTeamClick} className="button-style">Our Team</button>
             </li>
           </ul>
         </nav>
@@ -41,7 +54,6 @@ function App() {
         <h1 className="App-title">Should you build solar panels on your house?</h1>
       </div>
       
-      {/* Replace UserInputForm with AddressFinder */}
       <AddressFinder onCoordinatesFound={handleCoordinatesFound} />
       
       <div className="App-background">
@@ -53,6 +65,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
