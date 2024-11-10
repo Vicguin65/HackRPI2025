@@ -1,24 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface GeocodeResponse {
   lat: number;
   lng: number;
 }
+
 interface AddressFinderProps {
   onCoordinatesFound: (coordinates: GeocodeResponse) => void;
 }
-const AddressFinder: React.FC <AddressFinderProps>= ({onCoordinatesFound}) =>  {
+
+const AddressFinder: React.FC<AddressFinderProps> = ({ onCoordinatesFound }) => {
   const [address, setAddress] = useState<string>("");
-  const [coordinates, setCoordinates] = useState<GeocodeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(e.target.value);
   };
-  
 
   const findAddress = async () => {
-    setError(null); // Reset any previous error
+    setError(null);
 
     if (!address) {
       setError("Please enter an address");
@@ -42,8 +44,10 @@ const AddressFinder: React.FC <AddressFinderProps>= ({onCoordinatesFound}) =>  {
       }
 
       const { lat, lng } = data.results[0].geometry.location;
-      setCoordinates({ lat, lng });
-      onCoordinatesFound({lat, lng});
+      onCoordinatesFound({ lat, lng });
+      
+      // Navigate to ProjectPage with coordinates as state
+      navigate("/project", { state: { coordinates: { lat, lng } } });
     } catch (error: any) {
       setError(error.message || "An error occurred");
     }
@@ -59,15 +63,7 @@ const AddressFinder: React.FC <AddressFinderProps>= ({onCoordinatesFound}) =>  {
         placeholder="Enter an address"
       />
       <button onClick={findAddress}>Find Address</button>
-
       {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {coordinates && (
-        <div>
-          <p>Latitude: {coordinates.lat}</p>
-          <p>Longitude: {coordinates.lng}</p>
-        </div>
-      )}
     </div>
   );
 };
