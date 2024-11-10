@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 function SolarPanelEstimator({ solarPanelConfigs }) {
   const [panelIndex, setPanelIndex] = useState(0);
 

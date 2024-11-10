@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { findClosestBuilding } from "./solar";
 import SolarPanelEstimator from "./SolarPanelEstimator"; // Import the slider component
-
+import './Map.css';
 const containerStyle = {
   width: "100%",
   height: "400px",
@@ -49,8 +49,7 @@ const Map: React.FC<DisplayCoordinatesProps> = ({ coordinates }) => {
   }, [coordinates]);
 
   return (
-    <div>
-      <h1>Click on the Map to Get Coordinates</h1>
+    <div className="map-container">
       <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
@@ -60,24 +59,15 @@ const Map: React.FC<DisplayCoordinatesProps> = ({ coordinates }) => {
           <Marker position={coordinates} />
         </GoogleMap>
       </LoadScript>
-      <div id="coordinates">
-        <p>
-          <strong>Latitude:</strong> {coordinates.lat.toFixed(5)}
-        </p>
-        <p>
-          <strong>Longitude:</strong> {coordinates.lng.toFixed(5)}
-        </p>
-        <div>
-          <h2>maxArrayPanelsCount:</h2>
-          {solarPotential?.maxArrayPanelsCount ?? "N/A"}
-          <h2>maxArrayAreaMeters2:</h2>
-          {solarPotential?.maxArrayAreaMeters2 ?? "N/A"}
-          <h2>maxSunshineHoursPerYear:</h2>
-          {solarPotential?.maxSunshineHoursPerYear ?? "N/A"}
-        </div>
+      <div id="coordinates" className="coordinates-display">
+
+
         {/* Conditionally render the SolarPanelEstimator if solar panel configurations are available */}
         {solarPotential?.solarPanelConfigs && (
-          <SolarPanelEstimator solarPanelConfigs={solarPotential.solarPanelConfigs} />
+        <div className="solar-panel-estimator">
+        <SolarPanelEstimator solarPanelConfigs={solarPotential.solarPanelConfigs} />
+      </div>
+          
         )}
       </div>
     </div>
