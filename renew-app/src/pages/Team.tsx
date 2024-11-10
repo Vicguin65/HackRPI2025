@@ -11,7 +11,6 @@ const Team: React.FC = () => {
     return (
         <div>
             <Navbar />
-
             <div className="Problem-title">
                 Our Team
             </div>
