@@ -24,13 +24,13 @@ function App() {
               <a href="#problem">Our Problem</a>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a href="#contact">Our Team</a>
             </li>
           </ul>
         </nav>
       </header>
       <div className="App-body">
-        <h1 className="App-title">Where do you want to build solar panels?</h1>
+        <h1 className="App-title">Should you build solar panels on your house?</h1>
       </div>
       <UserInputForm />
       <div className="App-background">
